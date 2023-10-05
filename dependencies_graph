@@ -1,0 +1,39 @@
+digraph {
+	kitten
+	boto3
+	kitten -> boto3
+	botocore
+	boto3 -> botocore
+	urllib3
+	botocore -> urllib3
+	jmespath
+	botocore -> jmespath
+	"python-dateutil"
+	botocore -> "python-dateutil"
+	six
+	"python-dateutil" -> six
+	s3transfer
+	boto3 -> s3transfer
+	fabric
+	kitten -> fabric
+	deprecated
+	fabric -> deprecated
+	wrapt
+	deprecated -> wrapt
+	paramiko
+	fabric -> paramiko
+	bcrypt
+	paramiko -> bcrypt
+	pynacl
+	paramiko -> pynacl
+	cryptography
+	paramiko -> cryptography
+	cffi
+	cryptography -> cffi
+	pycparser
+	cffi -> pycparser
+	decorator
+	fabric -> decorator
+	invoke
+	fabric -> invoke
+}
