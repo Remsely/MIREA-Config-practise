@@ -19,6 +19,7 @@ def get_dependencies(package_name):
                     dependencies.add(dependency)
         else:
             print(f"Пакет {package_name} не найден на PyPI!")
+            sys.exit(1)
     except Exception:
         print("", end="")
 
@@ -53,9 +54,10 @@ def create_dependency_graph(package_name):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Running dependency_graph.py...")
+        print("Incorrect arguments!")
         sys.exit(1)
 
+    print("Running dependency_graph.py...")
     package_name = sys.argv[1]
     dependency_graph = create_dependency_graph(package_name)
     print(dependency_graph.source)
