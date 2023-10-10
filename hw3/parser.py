@@ -2,7 +2,6 @@ import ply.lex as lex
 from ply import yacc
 import json
 
-
 tokens = (
     'NUMBER',
     'STRING',
@@ -37,7 +36,7 @@ def t_COMMENT(t):
 
 
 def t_error(t):
-    print ("Illegal character '%s'" % t.value[0])
+    print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
 
@@ -52,7 +51,7 @@ def p_program(p):
 def p_s_exp_list(p):
     '''s_exp_list : s_exp s_exp_list
                 | s_exp'''
-    print(len(p), list(p))
+
     if len(p) == 2:
         p[0] = [p[1]]
     else:
@@ -64,13 +63,18 @@ def p_s_exp(p):
             | NAME data
             | OPEN s_exp_list CLOSE
             | NAME OPEN s_exp_list CLOSE'''
-
     if len(p) == 2:
         p[0] = p[1]
     elif len(p) == 3:
         p[0] = {p[1]: p[2]}
     elif len(p) == 4:
-        p[0] = p[2]
+        if isinstance(p[2][0], dict):
+            result_dict = {}
+            for d in p[2]:
+                result_dict.update(d)
+            p[0] = result_dict
+        else:
+            p[0] = p[2]
     else:
         p[0] = {p[1]: p[3]}
 
@@ -105,16 +109,25 @@ data = '''
     "ИКБО-14-20"
     "ИКБО-15-20"
     "ИКБО-16-20"
+    "ИКБО-16-20"
+    "ИКБО-17-20"
+    "ИКБО-18-20"
+    "ИКБО-19-20"
+    "ИКБО-20-20"
+    "ИКБО-21-20"
+    "ИКБО-22-20"
+    "ИКБО-23-20"
     "ИКБО-24-20")
 students (
 (age 19 group "ИКБО-4-20" name "Иванов И.И.")
 (age 18 group "ИКБО-5-20" name "Петров П.П.")
-(age 18 group "ИКБО-5-20" name "Сидоров С.С."))
+(age 18 group "ИКБО-5-20" name "Сидоров С.С.")
+(age 18 group "ИКБО-1-22" name "Прокопчук Р.О."))
 subject "Конфигурационное управление")
 '''
 
 result = parser.parse(data)
 
-print(result)
-json_result = json.dumps(result, indent=2)
+# print(result)
+json_result = json.dumps(result[0], ensure_ascii=False, indent=2)
 print(json_result)
