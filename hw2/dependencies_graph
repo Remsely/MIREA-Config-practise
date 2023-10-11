@@ -1,0 +1,35 @@
+digraph {
+	matplotlib
+	contourpy
+	matplotlib -> contourpy
+	numpy
+	contourpy -> numpy
+	cycler
+	matplotlib -> cycler
+	setuptools_scm
+	matplotlib -> setuptools_scm
+	tomli
+	setuptools_scm -> tomli
+	packaging
+	setuptools_scm -> packaging
+	setuptools
+	setuptools_scm -> setuptools
+	"typing-extensions"
+	setuptools_scm -> "typing-extensions"
+	pillow
+	matplotlib -> pillow
+	pyparsing
+	matplotlib -> pyparsing
+	"importlib-resources"
+	matplotlib -> "importlib-resources"
+	zipp
+	"importlib-resources" -> zipp
+	kiwisolver
+	matplotlib -> kiwisolver
+	"python-dateutil"
+	matplotlib -> "python-dateutil"
+	six
+	"python-dateutil" -> six
+	fonttools
+	matplotlib -> fonttools
+}
