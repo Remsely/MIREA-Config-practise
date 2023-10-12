@@ -36,16 +36,16 @@ def extract_package_name(dependency):
 
 def create_dependency_graph(package_name):
     graph = Digraph(format='png')
-    visited = set()
+    # visited = set()
 
     def add_dependencies(package_name):
         dependencies = get_dependencies(package_name)
         for dependency in dependencies:
-            if dependency not in visited:
-                visited.add(dependency)
-                graph.node(dependency)
-                graph.edge(package_name, dependency)
-                add_dependencies(dependency)
+            # if dependency not in visited:
+            #     visited.add(dependency)
+            graph.node(dependency)
+            graph.edge(package_name, dependency)
+            add_dependencies(dependency)
 
     graph.node(package_name)
     add_dependencies(package_name)
