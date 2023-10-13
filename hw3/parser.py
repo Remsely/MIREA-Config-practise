@@ -106,5 +106,9 @@ data = ''.join(open(file_path, 'r', encoding='UTF-8').readlines())
 
 result = parser.parse(data)
 # print(result)
-json_result = json.dumps(result[0], ensure_ascii=False, indent=2)
+if len(result) == 1:
+    json_parser_input = result[0]
+else:
+    json_parser_input = result
+json_result = json.dumps(json_parser_input, ensure_ascii=False, indent=2)
 print(json_result)
