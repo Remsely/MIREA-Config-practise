@@ -127,7 +127,7 @@ class BuildSystem:
                 "output_hash": task.output_hash
             }
         with open(state_file, 'w') as f:
-            json.dump(state, f)
+            json.dump(state, f, indent=4)
 
     def load_state(self, state_file):
         # Загружаем состояние системы сборки из JSON
@@ -158,4 +158,3 @@ if __name__ == "__main__":
 
     # Сохраняем состояние
     build_system.save_state("database/build_state.json")
-
