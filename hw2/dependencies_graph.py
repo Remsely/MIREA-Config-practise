@@ -57,7 +57,7 @@ if __name__ == '__main__':
         print("Incorrect arguments!")
         sys.exit(1)
 
-    print("Running dependency_graph.py...")
+    print("Running dependencies_graph.py...")
     package_name = sys.argv[1]
     dependency_graph = create_dependency_graph(package_name)
     print(dependency_graph.source)
