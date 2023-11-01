@@ -71,7 +71,6 @@ def get_node_label(reformed_info, current_git_branch):
 
 def render_graph(path):
     graph_code = graphviz.Digraph('Graph')
-    print(os.listdir(path))
     for branch in os.listdir(path):
         branch_path = path + "/" + branch
 
@@ -83,5 +82,5 @@ def render_graph(path):
 
 
 if __name__ == "__main__":
-    branches_path = ''.join(sys.argv[1:]).replace("\\", "/")
+    branches_path = ''.join(sys.argv[1:]).replace("\\", "/") + '/.git/logs/refs/heads'
     render_graph(branches_path)
