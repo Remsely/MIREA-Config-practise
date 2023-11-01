@@ -1,6 +1,6 @@
 import graphviz
 import os
-
+import sys
 
 created_nodes = set()
 global last_master_node
@@ -69,11 +69,11 @@ def get_node_label(reformed_info, current_git_branch):
     return f"{current_git_branch}\n{commit_massage}\n{commit_oneline_hash}"
 
 
-def render_graph(branches_path):
+def render_graph(path):
     graph_code = graphviz.Digraph('Graph')
-    print(os.listdir(branches_path))
-    for branch in os.listdir(branches_path):
-        branch_path = branches_path + "/" + branch
+    print(os.listdir(path))
+    for branch in os.listdir(path):
+        branch_path = path + "/" + branch
 
         if os.path.isfile(branch_path):
             build_graph(graph_code, branch_path)
@@ -83,7 +83,5 @@ def render_graph(branches_path):
 
 
 if __name__ == "__main__":
-    print('Путь до вашего проекта: ', end='')
-    branches_path = "C:\\Users\\proko\\dev\\konfig_practise".replace("\\", "/") + '/.git/logs/refs/heads'
+    branches_path = ''.join(sys.argv[1:]).replace("\\", "/")
     render_graph(branches_path)
-
