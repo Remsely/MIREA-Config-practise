@@ -84,3 +84,5 @@ def render_graph(path):
 if __name__ == "__main__":
     branches_path = ''.join(sys.argv[1:]).replace("\\", "/") + '/.git/logs/refs/heads'
     render_graph(branches_path)
+
+# C:\Users\paths\dev\konfig_repo_example
